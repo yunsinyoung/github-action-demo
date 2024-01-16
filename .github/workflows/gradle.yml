@@ -32,3 +32,22 @@ jobs:
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       with:
         arguments: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: cicdsample
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: SCP transfer
+        run: scp -p 2222 *.jar root@106.10.42.15:~/cicd
+      - name: Execute remote commands
+        run: |
+              ssh root@$@106.10.42.15 "sudo fuser -k 8080/tcp"
+              ssh root@$@106.10.42.15 "sudo nohup java -jar ~/cicd/*.jar &"
