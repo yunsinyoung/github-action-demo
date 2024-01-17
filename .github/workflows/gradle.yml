@@ -69,5 +69,4 @@ jobs:
           command_timeout: 2m
           script: |
             cd /home/workspace
-            fuser -k -n tcp 8080
-            java -jar github-action-demo-0.0.1-SNAPSHOT.jar
+            nohup java -jar github-action-demo-0.0.1-SNAPSHOT.jar &
