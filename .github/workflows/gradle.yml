@@ -49,7 +49,8 @@ jobs:
       - name: check artifact
         run: |
              ls
-             echo ${{ secrets.SSH_PRIVATE_KEY }}
+             echo "A initial message"
+             echo "${{ secrets.SSH_PRIVATE_KEY }}"
 #      - name: SCP transfer
 #        uses: appleboy/scp-action@master
 #        with:
