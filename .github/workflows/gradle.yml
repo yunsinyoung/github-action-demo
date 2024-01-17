@@ -47,18 +47,17 @@ jobs:
         with:
           name: cicdsample
       - name: check artifact
-        run: |
-             ls
-             echo "A initial message"
-             echo "${{ secrets.SSH_PRIVATE_KEY }}"
-#      - name: SCP transfer
-#        uses: appleboy/scp-action@master
-#        with:
-#          username: ROOT
-#          host: ${{ secrets.SSH_ADDR }}
-#          rm: true
-#          source: ${{ secrets.SOURCE_PATH }}
-#          strip_components: 1
+        run: ls
+      - name: SCP transfer
+        uses: appleboy/scp-action@master
+        with:
+          username: ROOT
+          host: 106.10.42.15
+          port: 2222
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          rm: true
+          source: /home
+          strip_components: 1
 #      - name: Setup SSH
 #        uses: webfactory/ssh-agent@v0.5.4
 #        with:
