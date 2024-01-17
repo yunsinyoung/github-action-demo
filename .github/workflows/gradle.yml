@@ -47,7 +47,7 @@ jobs:
         with:
           name: cicdsample
       - name: check artifact
-        uses: ls
+        run: ls
 #      - name: SCP transfer
 #        uses: appleboy/scp-action@master
 #        with:
