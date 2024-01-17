@@ -70,8 +70,8 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 2222
           script: |
-            whoami
-            ls
+            cd /home/workspace
+            nohup java -jar github-action-demo-0.0.1-SNAPSHOT.jar &
 #      - name: Setup SSH
 #        uses: webfactory/ssh-agent@v0.5.4
 #        with:
