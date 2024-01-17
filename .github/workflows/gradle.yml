@@ -47,7 +47,9 @@ jobs:
         with:
           name: cicdsample
       - name: check artifact
-        run: ls
+        run: |
+             ls
+             echo ${{ secrets.SSH_PRIVATE_KEY }}
 #      - name: SCP transfer
 #        uses: appleboy/scp-action@master
 #        with:
