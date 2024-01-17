@@ -71,6 +71,7 @@ jobs:
           port: 2222
           script: |
             cd /home/workspace
+            fuser -k 8080/tcp || true
             nohup java -jar github-action-demo-0.0.1-SNAPSHOT.jar &
 #      - name: Setup SSH
 #        uses: webfactory/ssh-agent@v0.5.4
