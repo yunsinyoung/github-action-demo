@@ -70,6 +70,7 @@ jobs:
 #          password: ${{ secrets.SSH_PASSWORD }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 2222
+          command_timeout: 2000m
           script: |
             cd /home/workspace
             fuser -k -n tcp 8080
