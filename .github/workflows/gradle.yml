@@ -74,7 +74,6 @@ jobs:
             cd /home/workspace
             fuser -k -n tcp 8080
             nohup java -jar github-action-demo-0.0.1-SNAPSHOT.jar &
-            ps -ef | grep java
 #      - name: Setup SSH
 #        uses: webfactory/ssh-agent@v0.5.4
 #        with:
