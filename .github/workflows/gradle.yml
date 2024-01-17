@@ -56,7 +56,7 @@ jobs:
           username: root
           host: 106.10.42.15
           port: 2222
-          password: ${{ secrets.SSH_PASSWORD }}
+#          password: ${{ secrets.SSH_PASSWORD }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           rm: true
           source: /home/runner/work/github-action-demo/github-action-demo
@@ -67,7 +67,8 @@ jobs:
         with:
           host: 106.10.42.15
           username: root
-          password: ${{ secrets.SSH_PASSWORD }}
+#          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 2222
           script: |
             cd /home/workspace
