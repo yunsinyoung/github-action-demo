@@ -50,18 +50,28 @@ jobs:
         run: |
              ls
              pwd
-      - name: SCP transfer
-        uses: appleboy/scp-action@master
+      - name: Deploy
+        uses: appleboy/ssh-action@master
         with:
-          username: ROOT
           host: 106.10.42.15
-          port: 2222
+          username: ROOT
           password: ${{ secrets.SSH_PASSWORD }}
+          port: 2222
+          script: |
+            whoami
+            ls
+#      - name: SCP transfer
+#        uses: appleboy/scp-action@master
+#        with:
+#          username: ROOT
+#          host: 106.10.42.15
+#          port: 2222
+#          password: ${{ secrets.SSH_PASSWORD }}
 #          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          rm: true
-          source: /home/runner/work/github-action-demo/github-action-demo
-          target: /home
-          strip_components: 1
+#          rm: true
+#          source: /home/runner/work/github-action-demo/github-action-demo
+#          target: /home
+#          strip_components: 1
 #      - name: Setup SSH
 #        uses: webfactory/ssh-agent@v0.5.4
 #        with:
