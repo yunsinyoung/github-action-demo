@@ -13,6 +13,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "Hello CICD! version: " + version + " First commit";
+        return "Hello CICD! version: " + version + " Second Commit";
     }
 }
