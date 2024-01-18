@@ -63,11 +63,19 @@ jobs:
         with:
           host: 106.10.42.15
           username: root
+          #          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 2222
+          script: |
+            fuser -k -n tcp 8080
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: 106.10.42.15
+          username: root
 #          password: ${{ secrets.SSH_PASSWORD }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 2222
           script: |
             cd /home/workspace
-            fuser -k -n tcp 8080
             nohup java -jar github-action-demo-0.0.1-SNAPSHOT.jar &
-            exit
