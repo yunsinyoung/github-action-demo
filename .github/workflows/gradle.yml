@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, ysy]
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -34,37 +34,37 @@ jobs:
       with:
         name: cicdsample
         path: build/libs/*.jar
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: cicdsample
-      - name: SCP transfer
-        uses: appleboy/scp-action@master
-        with:
-          username: root
-          host: 106.10.42.15
-          port: 2222
-#          password: ${{ secrets.SSH_PASSWORD }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          rm: true
-          source: /home/runner/work/github-action-demo/github-action-demo
-          target: /home
-          strip_components: 1
-      - name: Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: 106.10.42.15
-          username: root
-#          password: ${{ secrets.SSH_PASSWORD }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 2222
-          command_timeout: 2m
-          script: |
-            cd /home/workspace
-            fuser -k -n tcp 8080
-            nohup java -jar github-action-demo-0.0.1-SNAPSHOT.jar > nohup.out &
+#
+#  deploy:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Download artifact
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: cicdsample
+#      - name: SCP transfer
+#        uses: appleboy/scp-action@master
+#        with:
+#          username: root
+#          host: 106.10.42.15
+#          port: 2222
+##          password: ${{ secrets.SSH_PASSWORD }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          rm: true
+#          source: /home/runner/work/github-action-demo/github-action-demo
+#          target: /home
+#          strip_components: 1
+#      - name: Deploy
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: 106.10.42.15
+#          username: root
+##          password: ${{ secrets.SSH_PASSWORD }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          port: 2222
+#          command_timeout: 2m
+#          script: |
+#            cd /home/workspace
+#            fuser -k -n tcp 8080
+#            nohup java -jar github-action-demo-0.0.1-SNAPSHOT.jar > nohup.out &
