@@ -36,9 +36,9 @@ jobs:
         path: build/libs/*.jar
     - name: push image
       run: |        
-        docker build -t yunsinyoung/demo .
+        docker build -t yunsinyoung/demo:1.0.0 .
         docker login -u nalraysy3@gmail.com -p ${{ secrets.DOCKER_PASSWORD }} 
-        docker push yunsinyoung/demo
+        docker push yunsinyoung/demo:1.0.0
 
 
 #  deploy:

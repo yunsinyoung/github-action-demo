@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: core
-          image: yunsinyoung/demo:latest
+          image: yunsinyoung/demo:1.0.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
