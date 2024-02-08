@@ -35,7 +35,7 @@ jobs:
         name: cicdsample
         path: build/libs/*.jar
     - name: test
-      run: echo '$TEST'
+      run: echo $TEST
 #
 #  deploy:
 #    needs: build
