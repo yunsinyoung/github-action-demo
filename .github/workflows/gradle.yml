@@ -34,9 +34,13 @@ jobs:
       with:
         name: cicdsample
         path: build/libs/*.jar
-    - name: test
-      run: echo $TEST
-#
+    - name: push image
+      run: |        
+        docker build -t yunsinyoung/demo .
+        docker login -u nalraysy3@gmail.com -p ${{ secrets.DOCKER_PASSWORD }} 
+        docker push yunsinyoung/demo
+
+
 #  deploy:
 #    needs: build
 #    runs-on: ubuntu-latest
