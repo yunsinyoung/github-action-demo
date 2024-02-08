@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    runs-on: linux
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -34,6 +34,8 @@ jobs:
       with:
         name: cicdsample
         path: build/libs/*.jar
+    - name: test
+      run: echo '${{ env.TEST }}'
 #
 #  deploy:
 #    needs: build
