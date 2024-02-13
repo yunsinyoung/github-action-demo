@@ -17,8 +17,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      docker-version: 1.0.2
+      docker-version: ${{ needs.build.outputs.docker-version }}
     steps:
+    - name: write output to step
+      id: docker-version
+      run: echo 'docker-version=1.0.2' >> $GITHUB_OUTPUT
     - name: test version
       run:  echo '${{ needs.build.outputs.docker-version }}'
 
