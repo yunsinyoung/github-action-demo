@@ -20,7 +20,7 @@ jobs:
       docker-version: 1.0.2
     steps:
     - name: test version
-      run:  echo '${{ needs.build.outputs.apk-name }}'
+      run:  echo '${{ needs.build.outputs.docker-version }}'
 
     - uses: actions/checkout@v3
 
