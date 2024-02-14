@@ -19,6 +19,7 @@ jobs:
     outputs:
       docker-version: ${{ steps.docker-version.outputs.docker-version }}
     steps:
+    - uses: actions/checkout@v3
     - name: write output to step
       id: docker-version
       run: echo 'docker-version=1.0.2' >> $GITHUB_OUTPUT
@@ -48,9 +49,9 @@ jobs:
 
     - name: push image
       run: |
-        docker build -t yunsinyoung/demo:1.0.1 .
+        docker build -t yunsinyoung/demo:${{ steps.docker-version.outputs.docker-version }} .
         docker login -u nalraysy3@gmail.com -p ${{ secrets.DOCKER_PASSWORD }}
-        docker push yunsinyoung/demo:1.0.1
+        docker push yunsinyoung/demo:${{ steps.docker-version.outputs.docker-version }}
 
   print-ouput:
     needs: build
