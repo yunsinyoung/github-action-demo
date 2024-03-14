@@ -30,6 +30,7 @@ jobs:
     - name : update Docker version
       id: new-docker-version
       run : |
+        chmod 775 ./new.sh
         ./new.sh ${{ steps.docker-version.outputs.docker-version }}
         echo 'new-docker-version=$new_version' >> $GITHUB_OUTPUT
 
