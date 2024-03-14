@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# 사용자로부터 버전 입력 받기
-version="$1"  # 첫 번째 인자를 변수에 할당합니다.
+version="$1"
 
 first_field=$(echo "$version" | cut -d '.' -f 1)
 second_field=$(echo "$version" | cut -d '.' -f 2)
