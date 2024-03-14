@@ -32,6 +32,7 @@ jobs:
         run:  |
               chmod 775 ./new.sh
               source ./new.sh ${{ steps.docker-version.outputs.docker-version }}
+              echo 'new-docker-version=$new_version' >> $GITHUB_OUTPUT
 #              version=${{ steps.docker-version.outputs.docker-version }}
 #              first_field=$(echo "$version" | cut -d '.' -f 1)
 #              second_field=$(echo "$version" | cut -d '.' -f 2)
@@ -41,8 +42,7 @@ jobs:
 #              echo 'new-docker-version=$new_version' >> $GITHUB_OUTPUT
 
       - name: test new version
-        run:  |
-              echo 'new-docker-version=$new_version'
+        run:  |              
               echo '${{ steps.new-docker-version.outputs.new-docker-version }}'
 
 #    - name: Set up JDK 11
