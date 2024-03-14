@@ -36,7 +36,7 @@ jobs:
               third_field=$(echo "$version" | cut -d '.' -f 3)
               third_field=$((third_field + 1))
               echo "new_version=${first_field}.${second_field}.${third_field}" >> $GITHUB_ENV
-              echo "new_version=${first_field}.${second_field}.${third_field}" >> $GITHUB_OUTPUT
+              echo "new-docker-version=${first_field}.${second_field}.${third_field}" >> $GITHUB_OUTPUT
       #              echo 'new-docker-version=$new_version' >> $GITHUB_OUTPUT
       #              source ./new.sh ${{ steps.docker-version.outputs.docker-version }}
       #              echo $new_version
