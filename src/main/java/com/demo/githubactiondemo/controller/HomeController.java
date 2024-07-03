@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-    @Value("${app.version:1.0.0}")
-    String version;
 
     @GetMapping("/")
     public String home() {
-        return "Hello CICD! version: " + version + " 11th Commit" + " tag: 1.0.1";
+        return "Hello CICD! version: " + " 11th Commit" + " tag: 1.0.3";
     }
 }
